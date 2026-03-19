@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cost of Tabernacle Material</title>
+    <meta
+      name="description"
+      content="Interactive estimate of the current cost of the Tabernacle materials named in Exodus 38:21-39:41, using Exodus 38:21-39:32 as the main quantified source."
+    >
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <aside class="sidebar">
+        <p class="eyebrow">Exodus 38:21-39:41</p>
+        <h1>Current Cost Tabernacle Materials</h1>
+        <p class="sidebar-lead">
+          This page provides a live, source-linked estimate of the materials named in Exodus 38:21-39:41, using explicit totals where <a href="https://www.stepbible.org/?q=version=ESV@reference=Ex.38:21-39:32&options=NVHUG" target="_blank">Exodus 38:21-39:32</a>
+          or another directly relevant Exodus reference gives a measurable amount, and open rows where it does not.
+        </p>
+
+        <nav class="page-nav" aria-label="Site navigation">
+          <a class="nav-link is-active" href="./index.html">Current price calculator</a>
+          <a class="nav-link" href="./history.html">Price history</a>
+        </nav>
+
+        <div class="sidebar-block">
+          <h2>What this page is doing</h2>
+          <ul class="plain-list">
+            <li>Live gold, silver, copper, and USD/EUR refresh from public feeds</li>
+            <li>Bronze is estimated from copper with a visible multiplier</li>
+            <li>The total stays honest about what the passage quantifies</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-block">
+          <h2>Reading the total</h2>
+          <p>
+            This is a documented lower bound. <a href="https://www.stepbible.org/?q=version=ESV@reference=Ex.38:21-39:32&options=NVHUG" target="_blank">Exodus 38:21-39:32</a> is the main quantified source for the total, and a
+            few named items can be tightened further from other Exodus instructions, but several rows within the
+            wider 38:21-39:41 inventory still lack a complete measurable amount.
+          </p>
+        </div>
+
+        <div class="sidebar-block">
+          <h2>The interface</h2>
+          <p>
+        The interface is intentionally simple: a reference image, a few controls, a live summary, and the pricing table itself. The supporting explanations remain in the repository documentation.
+          </p>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section class="hero-panel">
+          <div class="hero-copy">
+            <p class="section-label">Current Price Calculator</p>
+            <h2>A community building a place for the Name to dwell</h2>
+            <p>
+              The tabernacle was not only a sacred place of worship, but also a major communal building project requiring costly and carefully prepared materials. The detailed lists of gold, silver, bronze, fabrics, wood, oil, and precious stones show both the value of what was offered and the importance of the tabernacle within Israel’s life. By looking at its material cost, we gain a clearer sense of the scale of the project and of the devotion expressed through the people’s contributions.
+            </p>
+          </div>
+
+          <figure class="hero-figure">
+            <img
+              src="./assets/tabernacle-holman-1890.jpg"
+              alt="Holman Bible illustration of the tabernacle in the wilderness"
+            >
+            <figcaption>
+              Public-domain Holman Bible illustration, 1890. Source:
+              <a href="https://commons.wikimedia.org/wiki/File:Holman_The_Tabernacle.jpg">Wikimedia Commons</a>.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section class="controls-panel" aria-label="Calculator controls">
+          <div class="control-group">
+            <span class="control-label">Currency</span>
+            <div class="segmented-control" id="currency-toggle" role="group" aria-label="Currency toggle">
+              <button type="button" class="toggle-button is-active" data-currency="USD" aria-pressed="true">
+                USD
+              </button>
+              <button type="button" class="toggle-button" data-currency="EUR" aria-pressed="false">
+                EUR
+              </button>
+            </div>
+          </div>
+
+          <label class="control-group factor-group" for="bronze-factor">
+            <span class="control-label">Bronze factor</span>
+            <div class="factor-row">
+              <input id="bronze-factor" name="bronze-factor" type="number" min="1" max="2" step="0.01" value="1.12">
+              <span class="input-suffix">x copper</span>
+            </div>
+          </label>
+
+          <div class="control-group button-group">
+            <span class="control-label">Live refresh</span>
+            <button type="button" class="refresh-button" id="refresh-prices">Refresh prices</button>
+          </div>
+        </section>
+
+        <section class="summary-grid" aria-label="Summary">
+          <article class="summary-card">
+            <p class="summary-label">Documented total</p>
+            <p class="summary-value" id="documented-total">--</p>
+            <p class="summary-note">Only rows that have both a quoted amount and a current price.</p>
+          </article>
+
+          <article class="summary-card">
+            <p class="summary-label">Quantified rows</p>
+            <p class="summary-value" id="quantified-rows">--</p>
+            <p class="summary-note">Metals, stones, and the exact anointing-oil recipe ingredients from Exodus 30.</p>
+          </article>
+
+          <article class="summary-card">
+            <p class="summary-label">Open rows</p>
+            <p class="summary-value" id="open-rows">--</p>
+            <p class="summary-note">Materials still missing enough data for a full total even after cross-referencing Exodus.</p>
+          </article>
+        </section>
+
+        <section class="table-panel">
+          <div class="panel-header">
+            <div>
+              <p class="section-label">Material Table</p>
+              <h2>Materials, amounts, current prices, and row totals</h2>
+            </div>
+            <div class="panel-meta-stack" aria-label="Live table data summary">
+              <p class="panel-note panel-note-compact" id="table-live-summary">Live summary loading...</p>
+              <p class="panel-note panel-note-compact" id="table-updated-summary">Updated summary loading...</p>
+              <p class="panel-note panel-note-compact" id="table-source-summary">Source summary loading...</p>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Material</th>
+                  <th scope="col">Amount in passage</th>
+                  <th scope="col">Current unit price</th>
+                  <th scope="col">Row total</th>
+                  <th scope="col">Pricing basis</th>
+                </tr>
+              </thead>
+              <tbody id="materials-table"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="info-panel" aria-label="Project information">
+          <p class="section-label">Project info</p>
+          <div class="info-panel-body">
+            <a
+              class="github-link"
+              href="https://github.com/tonyjurg/cost_of_tabernacle"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                <path
+                  fill="currentColor"
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+                  0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+                  -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+                  .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+                  -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 4.69c.68
+                  0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56
+                  .82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07
+                  -.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
+                ></path>
+              </svg>
+              <span>View the project on GitHub</span>
+            </a>
+            <p class="license-note">
+              &copy; 2026 Tony Jurg. Licensed under
+              <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>:
+              free to reuse with reference to the author.
+            </p>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

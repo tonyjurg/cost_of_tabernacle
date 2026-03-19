@@ -1,0 +1,48 @@
+name: Record price history
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  record-history:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Guard first-of-month snapshot window
+        id: schedule_guard
+        shell: bash
+        run: |
+          if [ "$(date -u +%d)" != "01" ]; then
+            echo "run_snapshot=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping history write because today is not the first day of the month in UTC."
+            exit 0
+          fi
+
+          echo "run_snapshot=true" >> "$GITHUB_OUTPUT"
+          echo "snapshot_date=$(date -u +%Y-%m-01)" >> "$GITHUB_OUTPUT"
+
+      - name: Record snapshot
+        if: steps.schedule_guard.outputs.run_snapshot == 'true'
+        run: python scripts/record-price-history.py --recorded-at "${{ steps.schedule_guard.outputs.snapshot_date }}" --replace-existing
+
+      - name: Commit updated history files
+        if: steps.schedule_guard.outputs.run_snapshot == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/price-history.json docs/data/price-history.js
+          git diff --cached --quiet || git commit -m "Add scheduled price snapshot"
+          git push
