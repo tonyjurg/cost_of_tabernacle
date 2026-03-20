@@ -1,3 +1,5 @@
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
 # Cost of Tabernacle
 
 This repository estimates the present-day cost of building the tabernacle using the materials named in Exodus 38:21-39:41. Its main quantified source is Exodus 38:21-39:32, and it also cross-references other Exodus passages when they give exact recipe quantities or other direct measurement details for those named items. It does not include the cost of labour.
