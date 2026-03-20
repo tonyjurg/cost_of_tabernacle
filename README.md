@@ -125,6 +125,14 @@ The architecture diagram in [`ARCHITECTURE.md`](ARCHITECTURE.md) is written in M
 
 The published page includes a public-domain Holman Bible tabernacle illustration from Wikimedia Commons. The image file is stored locally in `docs/assets/` so the GitHub Pages site does not depend on external hotlinking.
 
+## Disclosure
+
+This code in this repository was developed with assistance from OpenAI Codex.
+
+## Feedback and Suggestions
+
+If you encounter any issues, or if you have suggestions for improvements or additional feeds, please feel free to open an [issues](https://github.com/tonyjurg/cost_of_tabernacle/issues) in this repository.
+
 ## Copyright and license
 
 Copyright © 2026 Tony Jurg.
