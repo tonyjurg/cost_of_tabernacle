@@ -1,6 +1,6 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+ [![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)](https://www.python.org/)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black) [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/tonyjurg/cost_of_tabernacle)
 
 # Cost of Tabernacle
 
