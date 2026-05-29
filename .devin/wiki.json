@@ -1,0 +1,222 @@
+{
+  "repo_notes": [
+    {
+      "content": ""
+    }
+  ],
+  "pages": [
+    {
+      "title": "Project Overview",
+      "purpose": "High-level introduction to the Cost of the Tabernacle project: what it does, why it exists, its architecture pattern, and how the major components relate. Links to child pages for deeper coverage.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Getting Started",
+      "purpose": "How to run the site locally, open it via GitHub Pages, and understand the two published pages (calculator and history chart). Covers prerequisites and the file:// vs HTTP loading distinction.",
+      "parent": "Project Overview",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Methodology & Scope",
+      "purpose": "Explains the biblical scope (Exodus 38:21–39:41), weight-conversion assumptions (talent/shekel/hin to metric), the lower-bound total concept, and how cross-referenced Exodus passages are used. Covers METHODOLOGY.md in depth.",
+      "parent": "Project Overview",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Web Application",
+      "purpose": "Overview of the client-side static site hosted under docs/. Introduces the two pages and their shared CSS, then links to child pages for the calculator and history views.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Live Calculator (index.html & app.js)",
+      "purpose": "Deep dive into the calculator page: DOM structure, UI controls (currency toggle, bronze-factor input, refresh button), the MATERIALS dataset, state object, refreshLiveQuotes(), buildRowView(), and render() functions. Covers the full data-flow from API fetch to DOM update.",
+      "parent": "Web Application",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Historical Price Chart (history.html & history.js)",
+      "purpose": "Covers the history page: how history.js loads data (JS mirror first, JSON fetch fallback), Chart.js rendering, series-mode switching (total / per-material unit prices), currency toggle, and the latest-snapshot summary table.",
+      "parent": "Web Application",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Styling & Assets",
+      "purpose": "Documents docs/styles.css (layout, card styles, table styling, responsive behavior, visual states for live/snapshot/gap rows) and the static asset (tabernacle-holman-1890.jpg).",
+      "parent": "Web Application",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Data Layer",
+      "purpose": "Overview of how pricing data is stored and structured. Introduces the two data files (price-history.json and price-history.js mirror) and links to child pages for schema details and the automation pipeline.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Price History Schema",
+      "purpose": "Detailed reference for the price-history.json / price-history.js data schema: version field, entries array, per-entry fields (recordedAt, fxDate, usdToEur, bronzeFactor, documentedTotalUsd/Eur), material identifiers, amountKind values, pricingBasis strings, null rowTotal semantics, and the JS mirror wrapper.",
+      "parent": "Data Layer",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Material Catalogue",
+      "purpose": "Reference table of all 16 tracked materials: their IDs, biblical verse citations, amount kinds, pricing types (live-metal, derived-bronze, snapshot), and current proxy sources. Explains the distinction between quantified and unspecified rows.",
+      "parent": "Data Layer",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Automation & Scripts",
+      "purpose": "Overview of the Python maintenance scripts and the GitHub Actions workflow that keep the data files current. Links to child pages for each script and the CI workflow.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "record-price-history.py",
+      "purpose": "Documents the monthly snapshot recorder: CLI arguments (--recorded-at, --replace-existing, --history-path), build_snapshot() logic, API calls, unit conversions, write_history_files() dual-output, and how it is invoked by GitHub Actions.",
+      "parent": "Automation & Scripts",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "backfill-price-history.py",
+      "purpose": "Documents the historical backfill utility: CLI flags (--years, --frequency, --reset-history), Yahoo Finance futures data fetching, Frankfurter historical FX series, monthly-first-day targeting, and how static proxy rows are handled during backfill.",
+      "parent": "Automation & Scripts",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "update-fallback-values.py",
+      "purpose": "Documents the fallback-refresh script: what FALLBACK_QUOTES is, how the script fetches fresh values from Gold-API and Frankfurter, the regex replacement strategy for patching app.js in-place, and when to run it.",
+      "parent": "Automation & Scripts",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "GitHub Actions Workflow",
+      "purpose": "Covers record-price-history.yml in detail: cron schedule (0 6 1 * *), workflow_dispatch trigger, schedule_guard bash logic, contents:write permission, Python 3.11 environment setup, and the git diff guard that prevents empty commits.",
+      "parent": "Automation & Scripts",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "External API Integrations",
+      "purpose": "Reference for all third-party data sources used by the project: Gold-API (XAU, XAG, HG symbols), Frankfurter (USD/EUR), and Yahoo Finance (historical backfill only). Covers unit conventions, failure handling, and the FALLBACK_QUOTES safety net.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Live Price Feeds (Gold-API & Frankfurter)",
+      "purpose": "Details the Gold-API integration for XAU/XAG/HG spot quotes, troy-ounce and pound-to-kilogram conversions, the Frankfurter USD-to-EUR endpoint, and how the browser app and Python scripts share the same feed URLs.",
+      "parent": "External API Integrations",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Historical Data Source (Yahoo Finance)",
+      "purpose": "Explains how backfill-price-history.py uses Yahoo Finance futures chart data for historical gold, silver, and copper prices, the date-alignment logic for first-of-month targeting, and why non-metal proxy rows remain static in the backfill.",
+      "parent": "External API Integrations",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Contributing & Issue Tracking",
+      "purpose": "Overview of the contribution workflow, GitHub issue templates, and how to report bugs, documentation errors, pricing feed problems, or general enhancements.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Bug & Enhancement Reports",
+      "purpose": "Documents the bugs.md and other.md issue templates: required fields (OS, Browser, Version, reproduction steps, expected behavior), label conventions ([BUG] and [ENHANCE] prefixes), and guidance on when to use each template.",
+      "parent": "Contributing & Issue Tracking",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Documentation & Pricing Feed Issues",
+      "purpose": "Documents the documentation.md and pricing_feeds.md issue templates: the URL-reference requirement for documentation issues, the API URL field for pricing feed reports, and the pricefeeds label workflow.",
+      "parent": "Contributing & Issue Tracking",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Glossary",
+      "purpose": "Definitions of all codebase-specific terms, biblical units, financial concepts, and abbreviations that an onboarding engineer needs to understand the project.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    }
+  ]
+}
