@@ -6970,6 +6970,176 @@
           "rowTotalEur": 48.150863
         }
       }
+    },
+    {
+      "recordedAt": "2026-08-01T00:00:00Z",
+      "fxDate": "2026-07-31",
+      "usdToEur": 0.8707,
+      "bronzeFactor": 1.12,
+      "documentedTotalUsd": 136443379.733767,
+      "documentedTotalEur": 118801250.734191,
+      "materials": {
+        "gold": {
+          "name": "Gold",
+          "verses": "Exod. 38:24; 39:2-3, 8, 15-20, 25, 30",
+          "pricingBasis": "Live Gold-API spot quote, converted from troy ounces to kilograms.",
+          "amountKind": "weightKg",
+          "unitPriceUsd": 130007.972324,
+          "unitPriceEur": 113197.941503,
+          "rowTotalUsd": 130023833.296794,
+          "rowTotalEur": 113211751.651519
+        },
+        "silver": {
+          "name": "Silver",
+          "verses": "Exod. 38:25-28",
+          "pricingBasis": "Live Gold-API spot quote, converted from troy ounces to kilograms.",
+          "amountKind": "weightKg",
+          "unitPriceUsd": 1854.776537,
+          "unitPriceEur": 1614.953931,
+          "rowTotalUsd": 6380867.161119,
+          "rowTotalEur": 5555821.037187
+        },
+        "bronze": {
+          "name": "Bronze",
+          "verses": "Exod. 38:29-31; 39:39",
+          "pricingBasis": "Estimated from live copper because there is no widely quoted public bronze spot feed.",
+          "amountKind": "weightKg",
+          "unitPriceUsd": 15.455028,
+          "unitPriceEur": 13.456693,
+          "rowTotalUsd": 37422.186283,
+          "rowTotalEur": 32583.497596
+        },
+        "blue-yarn": {
+          "name": "Blue yarn",
+          "verses": "Exod. 26:1-6, 31, 36; 27:16; 39:1-5, 8, 21-24, 29, 31",
+          "pricingBasis": "Current public retail proxy for blue wool yarn.",
+          "amountKind": "unspecified",
+          "unitPriceUsd": 7.3,
+          "unitPriceEur": 6.35611,
+          "rowTotalUsd": null,
+          "rowTotalEur": null
+        },
+        "purple-yarn": {
+          "name": "Purple yarn",
+          "verses": "Exod. 26:1-6, 31, 36; 27:16; 39:1-5, 8, 21, 24, 29",
+          "pricingBasis": "Current public retail proxy for purple wool yarn.",
+          "amountKind": "unspecified",
+          "unitPriceUsd": 9.99,
+          "unitPriceEur": 8.698293,
+          "rowTotalUsd": null,
+          "rowTotalEur": null
+        },
+        "scarlet-yarn": {
+          "name": "Scarlet yarn",
+          "verses": "Exod. 26:1-6, 31, 36; 27:16; 39:1-5, 8, 24, 29",
+          "pricingBasis": "Current public retail proxy for scarlet wool yarn.",
+          "amountKind": "unspecified",
+          "unitPriceUsd": 7.3,
+          "unitPriceEur": 6.35611,
+          "rowTotalUsd": null,
+          "rowTotalEur": null
+        },
+        "fine-linen": {
+          "name": "Fine twined linen",
+          "verses": "Exod. 26:1-6; 27:9-18; 39:2-5, 8, 24, 27-29",
+          "pricingBasis": "Current public retail proxy for 100% linen fabric.",
+          "amountKind": "unspecified",
+          "unitPriceUsd": 21.83,
+          "unitPriceEur": 19.007381,
+          "rowTotalUsd": null,
+          "rowTotalEur": null
+        },
+        "onyx": {
+          "name": "Onyx shoulder stones",
+          "verses": "Exod. 39:6-7",
+          "pricingBasis": "Current public retail proxy for a black onyx cabochon.",
+          "amountKind": "count",
+          "unitPriceUsd": 1.95,
+          "unitPriceEur": 1.697865,
+          "rowTotalUsd": 3.9,
+          "rowTotalEur": 3.39573
+        },
+        "breastpiece-stones": {
+          "name": "Breastpiece stones",
+          "verses": "Exod. 39:10-14",
+          "pricingBasis": "Current public mixed-cabochon proxy; the biblical set spans multiple gemstones.",
+          "amountKind": "count",
+          "unitPriceUsd": 1.0,
+          "unitPriceEur": 0.8707,
+          "rowTotalUsd": 12.0,
+          "rowTotalEur": 10.4484
+        },
+        "acacia-wood": {
+          "name": "Acacia wood",
+          "verses": "Exod. 25:10, 23; 26:15-29; 27:1; 30:1; 39:33-39",
+          "pricingBasis": "Current public retail proxy for acacia lumber.",
+          "amountKind": "unspecified",
+          "unitPriceUsd": 15.5,
+          "unitPriceEur": 13.49585,
+          "rowTotalUsd": null,
+          "rowTotalEur": null
+        },
+        "olive-oil": {
+          "name": "Olive oil for the light",
+          "verses": "Exod. 27:20-21; 39:37",
+          "pricingBasis": "Current public grocery proxy for 1 liter olive oil.",
+          "amountKind": "unspecified",
+          "unitPriceUsd": 14.99,
+          "unitPriceEur": 13.051793,
+          "rowTotalUsd": null,
+          "rowTotalEur": null
+        },
+        "myrrh": {
+          "name": "Myrrh (anointing oil recipe)",
+          "verses": "Exod. 30:23-25; 39:38",
+          "pricingBasis": "Current public retail proxy for myrrh gum used as a stand-in for the flowing myrrh in Exodus 30.",
+          "amountKind": "weightKg",
+          "unitPriceUsd": 143.30047,
+          "unitPriceEur": 124.771719,
+          "rowTotalUsd": 816.812679,
+          "rowTotalEur": 711.1988
+        },
+        "cinnamon": {
+          "name": "Sweet cinnamon (anointing oil recipe)",
+          "verses": "Exod. 30:23-25; 39:38",
+          "pricingBasis": "Current public retail proxy for cinnamon sticks used as a stand-in for the spice in Exodus 30.",
+          "amountKind": "weightKg",
+          "unitPriceUsd": 17.262195,
+          "unitPriceEur": 15.030193,
+          "rowTotalUsd": 49.197256,
+          "rowTotalEur": 42.836051
+        },
+        "calamus": {
+          "name": "Aromatic cane / calamus (anointing oil recipe)",
+          "verses": "Exod. 30:23-25; 39:38",
+          "pricingBasis": "Current public retail proxy for calamus root powder used as a stand-in for the aromatic cane in Exodus 30.",
+          "amountKind": "weightKg",
+          "unitPriceUsd": 57.320188,
+          "unitPriceEur": 49.908688,
+          "rowTotalUsd": 163.362536,
+          "rowTotalEur": 142.23976
+        },
+        "cassia": {
+          "name": "Cassia (anointing oil recipe)",
+          "verses": "Exod. 30:24-25; 39:38",
+          "pricingBasis": "Current public retail proxy for cassia bark used as a stand-in for the cassia in Exodus 30.",
+          "amountKind": "weightKg",
+          "unitPriceUsd": 27.535737,
+          "unitPriceEur": 23.975366,
+          "rowTotalUsd": 156.953701,
+          "rowTotalEur": 136.659587
+        },
+        "anointing-oil-olive-oil": {
+          "name": "Olive oil (anointing oil recipe)",
+          "verses": "Exod. 30:24-25; 39:38",
+          "pricingBasis": "Current public grocery proxy for olive oil; Exodus 30 specifies one hin in the anointing oil recipe.",
+          "amountKind": "volumeL",
+          "unitPriceUsd": 14.99,
+          "unitPriceEur": 13.051793,
+          "rowTotalUsd": 54.8634,
+          "rowTotalEur": 47.769562
+        }
+      }
     }
   ]
 }
