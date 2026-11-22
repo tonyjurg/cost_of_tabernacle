@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
+from datetime import date, datetime
 from pathlib import Path
 from urllib.request import Request, urlopen
 
@@ -21,8 +23,20 @@ def fetch_json(url: str) -> dict:
         return json.loads(response.read().decode("utf-8"))
 
 
-def format_number_literal(value: float) -> str:
-    return f"{value:.6f}".rstrip("0").rstrip(".")
+def positive_number(value: float | str) -> float:
+    number = round(float(value), 6)
+    if isinstance(value, bool) or not math.isfinite(number) or number <= 0:
+        raise ValueError("Feed prices and exchange rates must be positive finite numbers.")
+    return number
+
+
+def normalize_timestamp(value: str) -> str:
+    if not isinstance(value, str):
+        raise ValueError("Metal quote timestamps must be ISO 8601 strings.")
+    timestamp = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if timestamp.tzinfo is None:
+        raise ValueError("Metal quote timestamps must include a timezone.")
+    return timestamp.isoformat().replace("+00:00", "Z")
 
 
 def parse_args() -> argparse.Namespace:
@@ -46,19 +60,23 @@ def main() -> None:
     copper = fetch_json("https://api.gold-api.com/price/HG")
     fx = fetch_json("https://api.frankfurter.dev/v1/latest?base=USD&symbols=EUR")
 
-    # Rebuild the object literal exactly as it appears in docs/app.js.
-    replacement_block = f"""  const FALLBACK_QUOTES = {{
-    XAU: {{ price: {format_number_literal(float(gold["price"]))}, updatedAt: "{gold["updatedAt"]}" }},
-    XAG: {{ price: {format_number_literal(float(silver["price"]))}, updatedAt: "{silver["updatedAt"]}" }},
-    HG: {{ price: {format_number_literal(float(copper["price"]))}, updatedAt: "{copper["updatedAt"]}" }},
-    usdToEur: {format_number_literal(float(fx["rates"]["EUR"]))},
-    fxDate: "{fx["date"]}",
-  }};"""
+    # Validate feed data before writing it, and serialize values as data rather than code.
+    fallback_quotes = {
+        symbol: {
+            "price": positive_number(quote["price"]),
+            "updatedAt": normalize_timestamp(quote["updatedAt"]),
+        }
+        for symbol, quote in (("XAU", gold), ("XAG", silver), ("HG", copper))
+    }
+    fallback_quotes["usdToEur"] = positive_number(fx["rates"]["EUR"])
+    fallback_quotes["fxDate"] = date.fromisoformat(fx["date"]).isoformat()
+    serialized_quotes = json.dumps(fallback_quotes, indent=2, allow_nan=False)
+    replacement_block = "  const FALLBACK_QUOTES = " + serialized_quotes.replace("\n", "\n  ") + ";"
 
     # Replace only the first fallback block so the rest of the app stays untouched.
     updated_content, replacements = re.subn(
         r"(?ms)^  const FALLBACK_QUOTES = \{.*?^  \};",
-        replacement_block,
+        lambda match: replacement_block,
         app_js_content,
         count=1,
     )
